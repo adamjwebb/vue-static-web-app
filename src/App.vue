@@ -1,14 +1,13 @@
 <template>
-  <div>Hello {{ value }}</div>
+  <IndexComponent />
 </template>
 
 <script>
+import IndexComponent from './IndexComponent.vue'
+
 export default {
-  name: "App",
-  data() {
-    return {
-      value: "World"
-    };
+  components: {
+    IndexComponent
   }
-};
+}
 </script>

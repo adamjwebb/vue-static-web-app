@@ -1,17 +1,29 @@
+<!-- FILEPATH: /home/worldwideweeb/repos/vue-static-web-app/src/index.html -->
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta charset="UTF-8">
+    <title>User Details</title>
   </head>
   <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
+    <h1>User Details</h1>
+    <div id="user-details"></div>
+
+    <script>
+      async function getUserDetails() {
+        const response = await fetch('api/userDetails');
+        const data = await response.json();
+        return data;
+      }
+
+      async function displayUserDetails() {
+        const userDetails = await getUserDetails();
+        const userDetailsDiv = document.getElementById('user-details');
+        userDetailsDiv.innerHTML = userDetails.document;
+      }
+
+      displayUserDetails();
+    </script>
   </body>
 </html>
