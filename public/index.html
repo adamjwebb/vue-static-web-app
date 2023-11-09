@@ -7,23 +7,17 @@
     <title>User Details</title>
   </head>
   <body>
-    <h1>User Details</h1>
-    <div id="user-details"></div>
+    <main>
+      <h2>Hello, <b id="userDetails"></h2>
+    </main>
+  </body>
+    
 
     <script>
-      async function getUserDetails() {
-        const response = await fetch('api/userDetails');
-        const data = await response.json();
-        return data;
-      }
-
-      async function displayUserDetails() {
-        const userDetails = await getUserDetails();
-        const userDetailsDiv = document.getElementById('user-details');
-        userDetailsDiv.innerHTML = userDetails.document;
-      }
-
-      displayUserDetails();
+      (async function () {
+        let response = await fetch('api/userDetails');
+        let message = await response.json();
+        document.querySelector('#user-details').innerHTML = message.text;
+      })();
     </script>
-  </body>
 </html>
